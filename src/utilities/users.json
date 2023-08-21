@@ -1,0 +1,18 @@
+{
+    "Ameer": {
+      "budget": 10,
+      "rented": []
+    },
+    "Nir": {
+      "budget": 10,
+      "rented": []
+    },
+    "Ady": {
+      "budget": 10,
+      "rented": []
+    },
+    "Ameer Cat" :{
+      "budget": 10,
+      "rented": []
+    }
+}

@@ -1,0 +1,154 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.navbar{
+    display: grid;
+    padding:10px 20px;
+    background: lightblue;
+    grid-template-columns: min-content auto min-content;
+}
+
+.logo{
+    margin:0 40px 0 0;
+    white-space : nowrap;
+}
+
+.logo a{
+    text-decoration: none;
+    font-weight: bold;
+    color:darkslateblue;
+}
+
+.welcome{
+    white-space : nowrap;
+}
+
+.menu .menu-item{
+    display: inline;
+    margin:0 20px 0 0;
+    color:darkslateblue;
+}
+.menu .menu-item:hover{
+    color:darkblue;
+}
+
+.users-wrapper{
+    margin:20px 0;
+    display: grid;
+    justify-content: center;
+}
+.users-wrapper h1{
+    margin: 10px 0 10px 0;
+}
+.users{
+    justify-content: center;
+}
+.user{
+    display: grid;
+    float:left;
+    width:100px;
+    height:100px;
+    justify-content: center;
+    align-items: center;
+    border:1px solid darkslateblue;
+    background-color: darkslateblue;
+    color:lightcyan;
+    border-radius: 20px;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.user:hover{
+    background-color: darkblue;
+}
+
+.logged{
+    cursor: default;
+    border:4px solid darkslateblue;
+    background-color: white;
+    color: darkslateblue;
+    font-weight: bold;
+}   
+.logged:hover{
+    background-color: white;
+}
+
+.catalog{
+    padding:10px 20px;
+}
+
+.movie{
+    position: relative;
+    width:150px;
+    height:220px;
+    margin:0 20px 20px 0;
+    float:left;
+    overflow: hidden;
+    border-radius: 20px;
+    padding:0;
+    border:2px solid white;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.movie:hover{
+    border:2px solid lightblue;
+}
+
+.movie img{
+    width:150px;
+}
+
+.movie .button{
+    position: absolute;
+    right:10px;
+    top:10px;
+    border-radius: 10px;
+    height:25px;
+}
+.movie .rent svg{
+    fill:lightblue;
+}
+.movie .rent:hover svg{
+    fill: lightcyan;
+}
+.movie .unrent svg{
+    fill:darkgray;
+}
+.movie .unrent:hover svg{
+    fill: gray;
+}
+
+.detailed-movie{
+    width:70%;
+    margin: 20px auto;
+    text-align: center;
+}
+.detailed-movie img{
+    border-radius: 20px;
+}
+
+.rented{
+    clear: both;
+}
+
+.rated{
+    clear: both;
+}
+
+.catalog-header{
+    display: grid;
+    grid-template-columns: auto min-content;
+    column-gap: 50px;
+}
+
+.searchbar input{
+    width: 40%;
+    min-width: 200px;
+}
+
+.budget{
+    white-space : nowrap;
+}
