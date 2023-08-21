@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { TMDB_FETCH_OPTIONS, TMDB_RANKED_API_URL, TMDB_SEARCH_API_URL, SEARCH_DELAY } from './../../utilities/Constants'
-import { filterMovies } from './../../utilities/Utilities'
+import { SEARCH_DELAY, SEARCH_MIN_LENGTH } from './../../utilities/Constants'
+import { filterMovies, fetchRatedMovies, fetchSearchResults } from './../../utilities/Utilities'
 import Rated from "./Rated";
 import Rented from "./Rented";
 import Budget from "./Budget";
 import Searchbar from "./Searchbar";
+import SearchResults from './SearchResults';
 
 function Catalog({userData, rentUnrentMovie}) {
 
     const [ratedMovies, setRatedMovies] = useState([])
+    const [searchResults, setSearchResults] = useState(false)
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearchChange = (event) => {
@@ -16,11 +18,20 @@ function Catalog({userData, rentUnrentMovie}) {
     }
 
     //fetch rated movies
-    useEffect(() => { fetchMovies() }, [])
+    useEffect(() => { 
+        fetchRatedMovies().then(m => {setRatedMovies(filterMovies(m.results, userData.rented))})
+    }, [])
 
-    //searching
+    //catch search query changes and fetch search results
     useEffect(() => {
-        const timeout = setTimeout(() => { if(searchQuery.length > 2) fetchMovies(searchQuery) }, SEARCH_DELAY)
+        const timeout = setTimeout(() => {
+            if (searchQuery.length >= SEARCH_MIN_LENGTH) {
+                fetchSearchResults(searchQuery).then(r => { setSearchResults(filterMovies(r.results, userData.rented)) })
+            } else {
+                setSearchResults(false)
+            }
+        }, SEARCH_DELAY)
+        
         return () => { clearTimeout(timeout) }
     }, [searchQuery])
 
@@ -28,13 +39,6 @@ function Catalog({userData, rentUnrentMovie}) {
     useEffect(() => {
         setRatedMovies(filterMovies(ratedMovies, userData.rented))
     }, [userData])
-
-    const fetchMovies = async function (searchRequest) {
-        const response = await fetch((searchRequest ? TMDB_SEARCH_API_URL + searchRequest : TMDB_RANKED_API_URL), TMDB_FETCH_OPTIONS)
-        const data = await response.json()
-
-        setRatedMovies(filterMovies(data.results, userData.rented))
-    }
 
     return (
         <div className="catalog">
@@ -45,7 +49,10 @@ function Catalog({userData, rentUnrentMovie}) {
 
             {userData.rented.length > 0 && <Rented movies={userData.rented} rentUnrentMovie={rentUnrentMovie}/>}
             
-            <Rated movies={ratedMovies} rentUnrentMovie={rentUnrentMovie} budget={userData.budget} />
+            {(searchResults !== false && searchQuery.length >= SEARCH_MIN_LENGTH) ?
+                <SearchResults movies={searchResults} searchQuery={searchQuery} rentUnrentMovie={rentUnrentMovie} budget={userData.budget} /> :
+                <Rated movies={ratedMovies} rentUnrentMovie={rentUnrentMovie} budget={userData.budget} />}
+            
         </div>
     );
 }

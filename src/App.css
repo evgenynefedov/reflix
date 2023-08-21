@@ -9,6 +9,7 @@ body {
     padding:10px 20px;
     background: lightblue;
     grid-template-columns: min-content auto min-content;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .logo{
@@ -60,6 +61,7 @@ body {
     margin: 0 10px 10px 0;
     cursor: pointer;
     box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .user:hover{
     background-color: darkblue;
@@ -90,11 +92,29 @@ body {
     border-radius: 20px;
     padding:0;
     border:2px solid white;
-    cursor: pointer;
+
     box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 .movie:hover{
     border:2px solid lightblue;
+}
+.movie a{
+    width:150px;
+    height:220px;
+    text-decoration: none;
+    font-size:15px;
+    color: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.movie a div{
+    padding:10px;
 }
 
 .movie img{
@@ -107,6 +127,7 @@ body {
     top:10px;
     border-radius: 10px;
     height:25px;
+    cursor: pointer;
 }
 .movie .rent svg{
     fill:lightblue;
@@ -128,6 +149,7 @@ body {
 }
 .detailed-movie img{
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .rented{

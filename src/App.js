@@ -18,13 +18,13 @@ function App() {
     setloggedUser(userName)
   }
 
-  const rentUnrentMovie = function (id, posterPath) {
+  const rentUnrentMovie = function (id, posterPath, title) {
     let userData = { ...usersData[loggedUser] }
     let rentedMovieIndex = userData.rented.findIndex((m) => m.id == id)
     if(rentedMovieIndex == -1){
       if(userData.budget < MOVIE_PRICE) return 
-      
-      userData.rented.push({ id: id, poster_path: posterPath })
+
+      userData.rented.push({ id: id, title: title, poster_path: posterPath, rented: true })
       userData.budget -= MOVIE_PRICE
     } else {
       userData.rented.splice(rentedMovieIndex, 1)
