@@ -1,5 +1,5 @@
 # REFLIX
-Mini-project to practise REACT.JS and JS. It's one-page project that partly repeats the behaviuor of NETFLIX, as follows: allowing different users to search for movies and subscribe (rent) them.
+Mini-project to practise REACT.JS and JS. It's one-page project that partly repeats the behaviuor of NETFLIX, as follows: allowing different users to search for movies (using TMDB's API) and subscribe/rent them.
 
 
 ## Table Of Contents
