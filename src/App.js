@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { MOVIE_PRICE } from './utilities/Constants';
 import Users from './components/Users/Users';
 import Navbar from './components/Navbar/Navbar';
 import Catalog from './components/Catalog/Catalog';
@@ -21,8 +22,10 @@ function App() {
     let userData = { ...usersData[loggedUser] }
     let rentedMovieIndex = userData.rented.findIndex((m) => m.id == id)
     if(rentedMovieIndex == -1){
+      if(userData.budget < MOVIE_PRICE) return 
+      
       userData.rented.push({ id: id, poster_path: posterPath })
-      userData.budget -= 1
+      userData.budget -= MOVIE_PRICE
     } else {
       userData.rented.splice(rentedMovieIndex, 1)
     }

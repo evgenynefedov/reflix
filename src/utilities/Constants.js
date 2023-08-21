@@ -22,3 +22,5 @@ export const TMDB_IMAGE_URL_BIG = "https://image.tmdb.org/t/p/w500"
 export const SEARCH_DELAY = 1000
 
 export const MAX_MOVIES_ON_PAGE = 14
+
+export const MOVIE_PRICE = 1

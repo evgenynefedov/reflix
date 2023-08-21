@@ -45,7 +45,7 @@ function Catalog({userData, rentUnrentMovie}) {
 
             {userData.rented.length > 0 && <Rented movies={userData.rented} rentUnrentMovie={rentUnrentMovie}/>}
             
-            <Rated movies={ratedMovies} rentUnrentMovie={rentUnrentMovie} />
+            <Rated movies={ratedMovies} rentUnrentMovie={rentUnrentMovie} budget={userData.budget} />
         </div>
     );
 }
