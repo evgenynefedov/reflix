@@ -7,12 +7,19 @@ import Users from './components/Users/Users';
 import Navbar from './components/Navbar/Navbar';
 import Catalog from './components/Catalog/Catalog';
 import DetailedMovie from './components/DetailedMovie';
+import Modal from './components/Modal/Modal'
 
 function App() {
   const navigate = useNavigate();
 
   const [usersData, setUsersData] = useState(require('./utilities/users.json'))
   const [loggedUser, setloggedUser] = useState(false)
+
+  const [modalMessage, setModalMessage] = useState("welcome")
+
+  const updateModalMessage = (message) =>{
+    setModalMessage(message)
+  }
 
   const changeUser = function(userName){
     setloggedUser(userName)
@@ -26,6 +33,8 @@ function App() {
 
       userData.rented.push({ id: id, title: title, poster_path: posterPath, rented: true })
       userData.budget -= MOVIE_PRICE
+
+      updateModalMessage(<div>Rented <b><q>{title}</q></b> Successfully! Congrats!</div>)
     } else {
       userData.rented.splice(rentedMovieIndex, 1)
     }
@@ -43,6 +52,7 @@ function App() {
 
   return (
     <div className="App">
+        {modalMessage !== false && <Modal message={modalMessage} updateModalMessage={updateModalMessage} />}
       
         <Navbar loggedUser={loggedUser} />
 
