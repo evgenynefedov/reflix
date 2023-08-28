@@ -20,6 +20,9 @@ export const TMDB_DETAILED_API_URL = "https://api.themoviedb.org/3/movie/"
 export const TMDB_IMAGE_URL_SMALL = "https://image.tmdb.org/t/p/w200"
 export const TMDB_IMAGE_URL_BIG = "https://image.tmdb.org/t/p/w500"
 
+export const GIPHY_API_KEY = "TfJcQtMMzlfbT4dz3AVffs9A9LWNs4DT"
+export const GIPHY_SEARCH_URL = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=`
+
 export const SEARCH_DELAY = 600
 export const SEARCH_MIN_LENGTH = 2
 

@@ -27,6 +27,7 @@
     border-radius: 10px;
     z-index:110;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
 }
 .modal-close-button {
     width:25px;
