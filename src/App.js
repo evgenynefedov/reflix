@@ -8,7 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import Catalog from './components/Catalog/Catalog';
 import DetailedMovie from './components/DetailedMovie';
 import Modal from './components/Modal/Modal'
-import {fetchGiphyByMovieTitle} from './utilities/Utilities'
+import ModalTemplate from './components/Modal/ModalTemplate'
 
 function App() {
   const navigate = useNavigate();
@@ -35,14 +35,7 @@ function App() {
       userData.rented.push({ id: id, title: title, poster_path: posterPath, rented: true })
       userData.budget -= MOVIE_PRICE
 
-      fetchGiphyByMovieTitle(title).then((gif) => {
-        updateModalMessage(
-          <div>
-            <p>Rented <b><q>{title}</q></b> Successfully! Congrats!</p>
-            {gif !== false && <img src={gif} />}
-          </div>
-        )
-      })
+      updateModalMessage(<ModalTemplate movieTitle={title} />)
       
     } else {
       userData.rented.splice(rentedMovieIndex, 1)
