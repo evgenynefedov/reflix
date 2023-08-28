@@ -20,5 +20,6 @@ Mini-project to practise REACT.JS and JS. It's one-page project that partly repe
     <img src="public/readme/2.png" width="300" />
     <img src="public/readme/3.png" width="300" />
     <img src="public/readme/4.png" width="300" />
+    <img src="public/readme/5.png" width="300" />
 </p>
 
